@@ -8,26 +8,40 @@ menu.addEventListener("click", () => {
 });
 
 const api_URL = "";
-const cardImage = document.querySelectorAll("l-card-image");
+const cardImage = document.querySelectorAll(".l-card-image");
+const cards = document.querySelectorAll(".card");
 // const container = document.querySelectorAll(".image");
 let counter = 0;
 // console.log(adImage);
 
-async function setImage(url) {
-const response=[];
-for (let i = 0; i < cardImage.length; i++) {
-  response[i]=await fetch()
+async function setImage() {
+  console.log(cardImage.length);
+  const response = [];
+  for (let i = 1; i <= cardImage.length; i++) {
+    response[i] = await fetch(`https://api.tvmaze.com/shows/${i * 3}`);
+    const data = response[i].json();
+    try {
+      data.then((element) => {
+        console.log(element);
+        cardImage[i - 1].setAttribute("src", element.image.medium);
+        // cards[i - 1].children[1].textContent = `Rate:${element.rating.average}\n
+        // Language:${element.language} Status:${element.status} \n
+        // Genre:${element.genres}`;
+        cards[i - 1].children[1].children[0].textContent = `${element.name}`;
+        cards[
+          i - 1
+        ].children[1].children[1].textContent = `Rate:${element.rating.average}\n
+        // Language:${element.language} Status:${element.status} \n
+        // Genre:${element.genres}`;
+        // console.log();
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
 
-
-
-
-
-
-
-
-
-
+setImage();
 //   const response = [];
 //   for (let i = 0; i < 3; i++) {
 //     response[i] = await fetch(`https://api.tvmaze.com/shows/${i + 3}/images`);
@@ -72,5 +86,4 @@ for (let i = 0; i < cardImage.length; i++) {
 //   console.log(response);
 // }
 
-setAdImage(api_URL);
 // adImage.src = element[0].resolutions.medium.url;
