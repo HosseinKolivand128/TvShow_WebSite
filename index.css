@@ -10,7 +10,7 @@ body {
   height: 5rem;
   /* position: sticky; */
 }
-.lux-logo {
+.site-logo {
   color: rgb(255, 255, 255);
   display: block;
   margin: initial;
@@ -99,4 +99,28 @@ header a:hover {
     transform: rotate(-45deg) translateY(-0.84rem);
     /* padding-right: 5px; */
   }
+}
+
+/*section 2*/
+
+.image {
+  text-align: center;
+  background-image: url(image/428987-true-detective-crime-drama-mystery-series-hbo.jpg);
+  background-size: cover;
+  background-position: center;
+}
+.image {
+  height: 450px;
+}
+
+.test-text {
+  position: absolute;
+  color: rgb(211, 224, 19);
+  left: 15%;
+  top: 65%;
+  font-weight: bold;
+  /* font-size: medium; */
+}
+.pr-btn {
+  border-radius: 5px;
 }
