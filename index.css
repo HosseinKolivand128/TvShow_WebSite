@@ -134,9 +134,39 @@ header a:hover {
   grid-template-rows: auto;
   /* margin-top: 20px; */
 }
-.card {
+
+.l-card {
   width: 15.5rem;
+  height: 35rem;
+  background-color: bisque;
+  /* padding: 50px; */
+  margin: 5px;
+  border-radius: 5px;
+  /* column-width: 15.5rem; */
 }
+.r-card {
+  /* column-width: 150px; */
+  background-color: bisque;
+  width: 12rem;
+  height: 30rem;
+  margin: 5px;
+  border-radius: 5px;
+  /* margin-right: 20px; */
+  /* padding: 20px; */
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* min-width: ; */
+}
+.r-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3px;
+}
+
 .left-side h2 {
   margin-left: 15px;
 }
@@ -145,6 +175,8 @@ header a:hover {
 }
 .right-side {
   border-left: 1px solid black;
+  /* padding: 10px; */
+  /* margin-right: 15px; */
 }
 .s2-right {
   display: flex;
@@ -156,7 +188,7 @@ header a:hover {
 .s2-left {
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: baseline;
   flex-flow: row wrap;
   margin-right: 10px;
 }
@@ -168,4 +200,6 @@ header a:hover {
 }
 .card-button {
   border-radius: 5px;
+  top: 1000px;
+  /* height: 20px; */
 }

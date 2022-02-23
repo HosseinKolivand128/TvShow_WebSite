@@ -9,39 +9,65 @@ menu.addEventListener("click", () => {
 
 const api_URL = "";
 const cardImage = document.querySelectorAll(".l-card-image");
-const cards = document.querySelectorAll(".card");
+const cards = document.querySelectorAll(".l-card");
+const rCardImage = document.querySelectorAll(".r-card-image");
+const rCards = document.querySelectorAll(".r-card");
 // const container = document.querySelectorAll(".image");
 let counter = 0;
 // console.log(adImage);
 
-async function setImage() {
-  console.log(cardImage.length);
+const shows = [82, 527, 22036, 5, 582, 179, 379, 4729, 369];
+async function setInfoLeft(shows) {
   const response = [];
-  for (let i = 1; i <= cardImage.length; i++) {
-    response[i] = await fetch(`https://api.tvmaze.com/shows/${i * 3}`);
+  for (let i = 0; i < shows.length; i++) {
+    console.log(`https://api.tvmaze.com/shows/${shows[i]}`);
+    response[i] = await fetch(`https://api.tvmaze.com/shows/${shows[i]}`);
     const data = response[i].json();
+    console.log(`https://api.tvmaze.com/shows/${shows[i]}`);
     try {
       data.then((element) => {
-        console.log(element);
-        cardImage[i - 1].setAttribute("src", element.image.medium);
-        // cards[i - 1].children[1].textContent = `Rate:${element.rating.average}\n
+        cardImage[i].setAttribute("src", element.image.medium);
+        cards[i].children[1].children[0].textContent = `${element.name}`;
+        cards[i].children[1].children[1].textContent = `Rate:${
+          element.rating.average !== null ? element.rating.average : "-"
+        }\n
         // Language:${element.language} Status:${element.status} \n
-        // Genre:${element.genres}`;
-        cards[i - 1].children[1].children[0].textContent = `${element.name}`;
-        cards[
-          i - 1
-        ].children[1].children[1].textContent = `Rate:${element.rating.average}\n
-        // Language:${element.language} Status:${element.status} \n
-        // Genre:${element.genres}`;
-        // console.log();
+        // Genre:${element.genres.length !== 0 ? element.genres : "-"}`;
       });
     } catch (error) {
       console.log(error);
     }
   }
 }
+setInfoLeft(shows);
+const rShows = [2, 1871, 138, 171, 216, 55138];
+async function setInfoRight() {
+  console.log(rCardImage.length);
+  const response = [];
+  for (let i = 1; i <= rCardImage.length; i++) {
+    response[i] = await fetch(`https://api.tvmaze.com/shows/${rShows[i - 1]}`);
+    const data = response[i].json();
+    try {
+      data.then((element) => {
+        console.log(element);
+        rCardImage[i - 1].setAttribute("src", element.image.medium);
 
-setImage();
+        rCards[i - 1].children[1].children[0].textContent = `${element.name}`;
+        rCards[i - 1].children[1].children[1].textContent = `Rate:${
+          element.rating.average
+        }\n
+        // Language:${"\n" + element.language} Status:${" " + element.status} \n
+        // Genre:${" " + element.genres} `;
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+}
+setInfoRight();
+
+// setImage();
+
 //   const response = [];
 //   for (let i = 0; i < 3; i++) {
 //     response[i] = await fetch(`https://api.tvmaze.com/shows/${i + 3}/images`);
