@@ -124,3 +124,82 @@ header a:hover {
 .pr-btn {
   border-radius: 5px;
 }
+.s2 {
+  margin-top: 20px;
+  padding: 15px;
+}
+.s2-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+  /* margin-top: 20px; */
+}
+
+.l-card {
+  width: 15.5rem;
+  height: 35rem;
+  background-color: bisque;
+  /* padding: 50px; */
+  margin: 5px;
+  border-radius: 5px;
+  /* column-width: 15.5rem; */
+}
+.r-card {
+  /* column-width: 150px; */
+  background-color: bisque;
+  width: 12rem;
+  height: 30rem;
+  margin: 5px;
+  border-radius: 5px;
+  /* margin-right: 20px; */
+  /* padding: 20px; */
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* min-width: ; */
+}
+.r-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 3px;
+}
+
+.left-side h2 {
+  margin-left: 15px;
+}
+.right-side h3 {
+  margin-left: 15px;
+}
+.right-side {
+  border-left: 1px solid black;
+  /* padding: 10px; */
+  /* margin-right: 15px; */
+}
+.s2-right {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  flex-flow: column wrap;
+  margin-left: 10px;
+}
+.s2-left {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  flex-flow: row wrap;
+  margin-right: 10px;
+}
+.card-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: wrap row;
+}
+.card-button {
+  border-radius: 5px;
+  top: 1000px;
+  /* height: 20px; */
+}
