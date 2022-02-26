@@ -16,16 +16,16 @@ const rCards = document.querySelectorAll(".r-card");
 const shows = [82, 527, 22036, 5, 582, 179, 379, 4729, 369];
 async function setInfoLeft(shows) {
   const response = [];
-  const counter = 0;
+  // const counter = 0;
   for (let i = 0; i < shows.length; i++) {
     response[i] = await fetch(`https://api.tvmaze.com/shows/${shows[i]}`);
     const data = response[i].json();
 
-    console.log(cards[i].children[1].children[0]);
+    // console.log(cards[i].children[1].children[0]);
     try {
       data.then((element) => {
-        console.log(element);
-        console.log(cards[i].children[1]);
+        // console.log(element);
+        // console.log(cards[i].children[1]);
         cardImage[i].setAttribute("src", element.image.medium);
 
         cards[i].children[1].children[0].textContent = `${element.name}`;
@@ -36,7 +36,6 @@ async function setInfoLeft(shows) {
           // Genre:${element.genres.length !== 0 ? element.genres : "-"}`;
         /*Call Create function*/
         addButton(cards[i].children[1], element);
-        counter++;
       });
     } catch (error) {
       console.log(error);
@@ -65,7 +64,6 @@ async function setInfoRight() {
 
         /*Call Create function*/
         addButton(rCards[i - 1].children[1]);
-        counter++;
       });
     } catch (error) {
       console.log(error);
@@ -79,13 +77,12 @@ function addButton(container, data) {
   infoBtn.textContent = "Show more";
   infoBtn.classList.add("card-button", "btn-warning");
   infoBtn.addEventListener("click", (e) => {
-    // window.location.href = "EpisodesPage.html";
-    changePage(data);
+    showEpisodes(data);
   });
   container.append(infoBtn);
 }
 
-function changePage(data) {
+function showEpisodes(data){
   
 }
 
