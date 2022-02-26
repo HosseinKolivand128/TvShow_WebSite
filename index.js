@@ -82,9 +82,7 @@ function addButton(container, data) {
   container.append(infoBtn);
 }
 
-function showEpisodes(data){
-  
-}
+function showEpisodes(data) {}
 
 // setImage();
 
