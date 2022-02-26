@@ -82,7 +82,17 @@ function addButton(container, data) {
   container.append(infoBtn);
 }
 
-function showEpisodes(data) {}
+function showEpisodes(data) {
+  const showName = document.querySelector(".ShowName");
+  console.log(data);
+  showName.textContent = data.name;
+  const showImg = document.querySelector("#showImg");
+  showImg.setAttribute("src", data.image.medium);
+  const descabout = document.querySelector("#desc-about");
+  descabout.innerHTML = data.summary;
+
+  
+}
 
 // setImage();
 
