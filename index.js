@@ -63,7 +63,7 @@ async function setInfoRight() {
         // Genre:${" " + element.genres} `;
 
         /*Call Create function*/
-        addButton(rCards[i - 1].children[1]);
+        addButton(rCards[i - 1].children[1], element);
       });
     } catch (error) {
       console.log(error);
@@ -77,12 +77,86 @@ function addButton(container, data) {
   infoBtn.textContent = "Show more";
   infoBtn.classList.add("card-button", "btn-warning");
   infoBtn.addEventListener("click", (e) => {
+    // console.log(data);
     showEpisodes(data);
   });
   container.append(infoBtn);
 }
 
-function showEpisodes(data) {}
+function showEpisodes(data) {
+  const showName = document.querySelector(".ShowName");
+  console.log(data);
+  showName.textContent = data.name;
+  const showImg = document.querySelector("#showImg");
+  showImg.setAttribute("src", data.image.medium);
+  const descabout = document.querySelector("#desc-about");
+  descabout.innerHTML = data.summary;
+  const episodes = getEpisodes(data.id);
+  const tBody = document.querySelector("#table-Body");
+  removeAllChildNodes(tBody);
+  try {
+    episodes.then((element) => {
+      console.log(element);
+      // console.log(element.length);
+      // tBody.removeChild();
+      if (tBody.childElementCount === 0) {
+        for (let i = 0; i < element.length; i++) {
+          console.log(element[i]);
+          const imgTd = document.createElement("td");
+          const infTd = document.createElement("td");
+          const sumTd = document.createElement("td");
+          const btnTd = document.createElement("td");
+          const tr = document.createElement("tr");
+
+          const img = document.createElement("img");
+          if (element[i].image !== null) {
+            img.setAttribute("src", element[i].image.medium);
+            imgTd.appendChild(img);
+            tr.appendChild(imgTd);
+          } else {
+            imgTd.textContent = "No Image";
+            tr.appendChild(imgTd);
+          }
+
+          const p = document.createElement("p");
+          p.textContent = `Episode Name: ${element[i].name}`;
+          const p2 = document.createElement("p");
+          p2.textContent = `S${element[i].season} E${element[i].number}`;
+          infTd.appendChild(p);
+          infTd.appendChild(p2);
+          tr.appendChild(infTd);
+
+          const p3 = document.createElement("p");
+          p3.innerHTML = element[i].summary;
+          sumTd.appendChild(p3);
+          tr.appendChild(sumTd);
+
+          const btn = document.createElement("button");
+          btn.textContent = "more details";
+          btnTd.appendChild(btn);
+          tr.appendChild(btnTd);
+
+          tBody.appendChild(tr);
+        }
+      } else {
+        removeAllChildNodes(tBody);
+        console.log(tBody.childElementCount);
+      }
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+async function getEpisodes(id) {
+  const response = await fetch(`https://api.tvmaze.com/shows/${id}/episodes`);
+  const data = response.json();
+  return data;
+}
 
 // setImage();
 
