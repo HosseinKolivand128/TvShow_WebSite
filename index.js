@@ -92,7 +92,7 @@ function showEpisodes(data) {
   const descabout = document.querySelector("#desc-about");
   descabout.innerHTML = data.summary;
   const episodes = getEpisodes(data.id);
-  
+
   const thead = document.querySelector("thead");
   removeAllChildNodes(thead);
 
@@ -172,4 +172,6 @@ async function getEpisodes(id) {
   const data = response.json();
   return data;
 }
+
+/*For Search */
 
