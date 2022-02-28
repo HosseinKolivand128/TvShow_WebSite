@@ -85,7 +85,7 @@ function addButton(container, data) {
 
 function showEpisodes(data) {
   const showName = document.querySelector(".ShowName");
-  console.log(data);
+  // console.log(data);
   showName.textContent = data.name;
   const showImg = document.querySelector("#showImg");
   showImg.setAttribute("src", data.image.medium);
@@ -111,8 +111,7 @@ function showEpisodes(data) {
     thead.appendChild(trH);
     episodes.then((element) => {
       console.log(element);
-      // console.log(element.length);
-      // tBody.removeChild();
+
       if (tBody.childElementCount === 0) {
         for (let i = 0; i < element.length; i++) {
           console.log(element[i]);
@@ -175,3 +174,23 @@ async function getEpisodes(id) {
 
 /*For Search */
 
+const searchBtn = document.querySelector("#search");
+const searchIcn = document.querySelector(".icon");
+const input = document.querySelector("#input");
+searchIcn.addEventListener("click", () => {
+  input.classList.toggle("visible");
+});
+
+input.addEventListener("click", (e) => {
+  searchReasult(input.value);
+});
+
+async function searchReasult(query) {
+  const response = await fetch("https://api.tvmaze.com/search/shows?q=girls");
+  const data = response.json();
+  try {
+    data.then((element) => {});
+  } catch (error) {
+    console.log(error);
+  }
+}
