@@ -25,6 +25,9 @@ body {
 }
 .nav-option > li {
   padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .nav-option > li:hover {
   color: red;
@@ -36,7 +39,9 @@ a {
 header a:hover {
   color: red;
 }
-
+#search .icon {
+  cursor: pointer;
+}
 @media screen and (max-width: 768px) {
   body.active {
     overflow: hidden;
@@ -137,7 +142,9 @@ header a:hover {
 
 .l-card {
   width: 15.5rem;
-  height: 35rem;
+  /* height: 35rem; */
+  min-height: 36rem;
+  height: max-content;
   background-color: #ffe4c4;
   /* padding: 50px; */
   margin: 5px;
@@ -148,7 +155,8 @@ header a:hover {
   /* column-width: 150px; */
   background-color: bisque;
   width: 12rem;
-  height: 30rem;
+  min-height: 30rem;
+  height: max-content;
   margin: 5px;
   border-radius: 5px;
   /* margin-right: 20px; */
@@ -189,7 +197,7 @@ header a:hover {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
-  flex-flow: row wrap;
+  flex-flow: nowrap;
   margin-right: 10px;
 }
 .card-container {
@@ -237,4 +245,65 @@ header a:hover {
 
 .episodes-color {
   background-color: #001b3b;
+}
+/*search button*/
+
+.Sactive {
+  width: 360px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 60px;
+}
+#search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  /* width: 360px; */
+}
+.icon-color {
+  color: blue;
+}
+.input-container {
+  transition: 0.5s;
+}
+#input {
+  display: none;
+  border-radius: 50px;
+  margin-left: 5px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  /* place-content: "Type Here"; */
+}
+#input::placeholder {
+  padding: 5px;
+}
+.visible {
+  display: inline-block !important;
+}
+.visibleT {
+  display: block !important;
+}
+
+.search-part {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#search-title {
+  display: none;
+}
+.search-title-align {
+  text-align: center;
+}
+
+#search-reasults {
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
+  grid-template-rows: auto;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  /* align-items: center;
+  flex-flow: row wrap; */
 }

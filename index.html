@@ -27,7 +27,17 @@
 
         <ul class="nav-option fw-bold fs-5" id="options">
           <li class="nav-link"><a href="#">Home</a></li>
-          <li class="nav-link"><a href="#">Search</a></li>
+          <li class="nav-link" id="search">
+            <a class="icon">Search</a>
+            <section class="input-container">
+              <input
+                type="text"
+                id="input"
+                name="searchInput"
+                placeholder="Type here..."
+              />
+            </section>
+          </li>
           <li class="nav-link"><a href="#">Login/Sign up</a></li>
         </ul>
       </nav>
@@ -97,7 +107,13 @@
           </button>
         </section>
       </section>
-
+      <!-- For Search reasult -->
+      <section class="search-part">
+        <h5 id="search-title" class="search-title-align">
+          Your search reasults
+        </h5>
+        <section id="search-reasults"></section>
+      </section>
       <!-- //section three the main part of site// -->
       <section class="s2">
         <section class="s2-container">
