@@ -211,7 +211,7 @@ header a:hover {
   display: flex;
   justify-content: space-around;
   align-items: baseline;
-  flex-flow: nowrap;
+  flex-flow: wrap;
   margin-right: 10px;
 }
 .card-container {
