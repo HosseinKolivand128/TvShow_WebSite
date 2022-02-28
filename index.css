@@ -321,3 +321,28 @@ header a:hover {
   /* align-items: center;
   flex-flow: row wrap; */
 }
+
+/*Footer Style*/
+footer {
+  background-color: rgb(0, 0, 44);
+  padding: 10px;
+  min-height: 27vh;
+}
+.info h3 {
+  color: red;
+}
+.info {
+  color: aliceblue;
+  padding: 10px;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+}
