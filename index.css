@@ -104,18 +104,32 @@ header a:hover {
     transform: rotate(-45deg) translateY(-0.84rem);
     /* padding-right: 5px; */
   }
+  .visibility {
+    display: none;
+  }
 }
-
+.visibility {
+  display: none;
+}
 /*section 2*/
 
 .image {
   text-align: center;
-  background-image: url(image/428987-true-detective-crime-drama-mystery-series-hbo.jpg);
   background-size: cover;
   background-position: center;
 }
+.bgi-1 {
+  background-image: url("image/428987-true-detective-crime-drama-mystery-series-hbo.jpg");
+}
+.bgi-2 {
+  background-image: url("image/277eb1d795931a400e9f31956d3d788b.jpg");
+}
+.bgi-3 {
+  background-image: url("image/474889-h.webp");
+  bottom: 5000px;
+}
 .image {
-  height: 450px;
+  height: 768px;
 }
 
 .test-text {
@@ -230,7 +244,7 @@ header a:hover {
   justify-content: space-between;
   /* align-content: space-around; */
 }
-#desc-about {
+.desc-about {
   padding-left: 15px;
   width: 65%;
   color: rgb(243, 243, 234);
@@ -287,7 +301,7 @@ header a:hover {
 
 .search-part {
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 36px;
 }
 
 #search-title {

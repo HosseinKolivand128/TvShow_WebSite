@@ -5,6 +5,7 @@ menu.addEventListener("click", () => {
   menu.classList.toggle("is-active");
   menuOptions.classList.toggle("active");
   document.body.classList.toggle("active");
+  document.querySelector(".slide").classList.toggle("visibility");
 });
 
 const api_URL = "";
@@ -82,12 +83,30 @@ function addButton(container, data) {
 }
 
 function showEpisodes(data) {
-  const showName = document.querySelector(".ShowName");
-  // console.log(data);
+  const epInfoContainer = document.querySelector(".showInfoContainer");
+
+  removeAllChildNodes(epInfoContainer);
+
+  const showName = document.createElement("h1");
+  showName.classList.add("ShowName");
   showName.textContent = data.name;
-  const showImg = document.querySelector("#showImg");
+
+  const showInf = document.createElement("section");
+  showInf.classList.add("showInf");
+
+  const showImg = document.createElement("img");
   showImg.setAttribute("src", data.image.medium);
-  const descabout = document.querySelector("#desc-about");
+  showInf.appendChild(showImg);
+
+  const descCont = document.createElement("section");
+
+  const descabout = document.createElement("p");
+  descabout.classList.add("fs-5", "desc-about");
+  descabout.innerHTML = data.summary;
+
+  descCont.appendChild(descabout);
+  showInf.appendChild(descCont);
+  epInfoContainer.append(showName, showInf);
   descabout.innerHTML = data.summary;
   const episodes = getEpisodes(data.id);
 
