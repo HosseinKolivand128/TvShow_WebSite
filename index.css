@@ -39,7 +39,9 @@ a {
 header a:hover {
   color: red;
 }
-
+#search .icon {
+  cursor: pointer;
+}
 @media screen and (max-width: 768px) {
   body.active {
     overflow: hidden;
@@ -140,7 +142,9 @@ header a:hover {
 
 .l-card {
   width: 15.5rem;
-  height: 35rem;
+  /* height: 35rem; */
+  min-height: 36rem;
+  height: max-content;
   background-color: #ffe4c4;
   /* padding: 50px; */
   margin: 5px;
@@ -151,7 +155,8 @@ header a:hover {
   /* column-width: 150px; */
   background-color: bisque;
   width: 12rem;
-  height: 30rem;
+  min-height: 30rem;
+  height: max-content;
   margin: 5px;
   border-radius: 5px;
   /* margin-right: 20px; */
@@ -275,4 +280,30 @@ header a:hover {
 }
 .visible {
   display: inline-block !important;
+}
+.visibleT {
+  display: block !important;
+}
+
+.search-part {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#search-title {
+  display: none;
+}
+.search-title-align {
+  text-align: center;
+}
+
+#search-reasults {
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
+  grid-template-rows: auto;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  /* align-items: center;
+  flex-flow: row wrap; */
 }

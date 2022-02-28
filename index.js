@@ -24,8 +24,6 @@ async function setInfoLeft(shows) {
     // console.log(cards[i].children[1].children[0]);
     try {
       data.then((element) => {
-        // console.log(element);
-        // console.log(cards[i].children[1]);
         cardImage[i].setAttribute("src", element.image.medium);
 
         cards[i].children[1].children[0].textContent = `${element.name}`;
@@ -114,7 +112,7 @@ function showEpisodes(data) {
 
       if (tBody.childElementCount === 0) {
         for (let i = 0; i < element.length; i++) {
-          console.log(element[i]);
+          // console.log(element[i]);
           const imgTd = document.createElement("td");
           const infTd = document.createElement("td");
           const sumTd = document.createElement("td");
@@ -181,16 +179,63 @@ searchIcn.addEventListener("click", () => {
   input.classList.toggle("visible");
 });
 
-input.addEventListener("click", (e) => {
-  searchReasult(input.value);
+input.addEventListener("keydown", (e) => {
+  console.log(e);
+  if (e.keyCode === 13) {
+    searchReasult(input.value);
+  }
 });
 
 async function searchReasult(query) {
-  const response = await fetch("https://api.tvmaze.com/search/shows?q=girls");
-  const data = response.json();
+  const response = await fetch(
+    `https://api.tvmaze.com/search/shows?q=${query}`
+  );
+
+  // console.log(data);
   try {
-    data.then((element) => {});
+    const data = response.json();
+    showSearchReasult(data);
   } catch (error) {
     console.log(error);
   }
+}
+
+function showSearchReasult(data) {
+  const reasults = document.querySelector("#search-reasults");
+  removeAllChildNodes(reasults);
+  document.querySelector("#search-title").classList.toggle("visibleT");
+  data.then((e) => {
+    console.log(e);
+    for (const show of e) {
+      const sCard = document.createElement("section");
+      sCard.classList.add("l-card");
+
+      const img = document.createElement("img");
+      img.classList.add("l-card-image", "card-img-top");
+      const cardBody = document.createElement("section");
+      cardBody.classList.add("card-body");
+      const title = document.createElement("h5");
+      title.classList.add("card-title");
+      const p = document.createElement("p");
+      p.classList.add("card-desctiption", "card-text");
+
+      console.log(show);
+
+      img.setAttribute(
+        "src",
+        show.show.image !== null ? show.show.image.medium : "--"
+      );
+      title.textContent = `${show.show.name}`;
+      p.textContent = `Rate:${show.show.rating.average}\n
+        // Language:${"\n" + show.show.language} Status:${
+        " " + show.show.status
+      } \n
+        // Genre:${" " + show.show.genres} `;
+      cardBody.append(title, p);
+      sCard.append(img, cardBody);
+      reasults.appendChild(sCard);
+      addButton(sCard, show.show);
+    }
+  });
+  console.log("in function");
 }
