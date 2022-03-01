@@ -76,7 +76,6 @@ function addButton(container, data) {
   infoBtn.textContent = "Show more";
   infoBtn.classList.add("card-button", "btn-warning");
   infoBtn.addEventListener("click", (e) => {
-    // console.log(data);
     showEpisodes(data);
   });
   container.append(infoBtn);
@@ -131,7 +130,6 @@ function showEpisodes(data) {
 
       if (tBody.childElementCount === 0) {
         for (let i = 0; i < element.length; i++) {
-          // console.log(element[i]);
           const imgTd = document.createElement("td");
           const infTd = document.createElement("td");
           const sumTd = document.createElement("td");
@@ -210,7 +208,6 @@ async function searchReasult(query) {
     `https://api.tvmaze.com/search/shows?q=${query}`
   );
 
-  // console.log(data);
   try {
     const data = response.json();
     showSearchReasult(data);
@@ -238,8 +235,6 @@ function showSearchReasult(data) {
       const p = document.createElement("p");
       p.classList.add("card-desctiption", "card-text");
 
-      console.log(show);
-
       img.setAttribute(
         "src",
         show.show.image !== null ? show.show.image.medium : "--"
@@ -256,5 +251,4 @@ function showSearchReasult(data) {
       addButton(sCard, show.show);
     }
   });
-  console.log("in function");
 }
